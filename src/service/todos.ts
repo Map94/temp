@@ -3,6 +3,6 @@ import { Todo } from "@/data/todos.types";
 
 export const todosService = {
   async list(): Promise<Todo[]> {
-    return todos.list();
+    return await todos.list();
   },
 };
