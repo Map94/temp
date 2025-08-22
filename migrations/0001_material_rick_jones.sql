@@ -1,0 +1,1 @@
+ALTER TABLE `todos_table` ADD `priority` integer DEFAULT 0 NOT NULL;

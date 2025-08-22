@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Check, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Todo } from "@/data/todos.types";
+import { ComboBoxResponsive } from "./prioritybox";
 
 interface TodoItemProps {
   todo: Todo;
@@ -14,24 +15,29 @@ interface TodoItemProps {
 
 export function TodoItem({ todo, onToggle, onRemove }: TodoItemProps) {
   return (
-    <div className="p-4 flex flex-col justify-between rounded-md border shadow-sm h-72">
+    <div className="relative p-4 flex flex-col justify-between rounded-md border shadow-sm h-72 select-none">
       {/* Top section with content */}
-      <div className="flex items-center gap-6">
+      <div className="flex items-center justify-between ">
         <span className="text-sm text-muted-foreground font-medium">
           #{todo.id}
         </span>
         {todo.completed && (
-          <div className="flex items-center gap-1 text-green-600 ">
+          <div className="flex items-center gap-1 text-green-600">
             <Check className="h-4 w-4" />
             <span className="text-sm font-medium">Done</span>
           </div>
         )}
+        {/* Priority box positioned at top right of each card */}
+        <div className="flex items-end">
+          <ComboBoxResponsive todo={todo} />
+        </div>
       </div>
-      <div className="flex">
+      <div className="flex justify-center">
         <span
           className={cn(
-            "transition-all duration-200",
-            todo.completed && "line-through text-muted-foreground"
+            "transition-all duration-200 text-center",
+            todo.completed &&
+              "line-through decoration-1 decoration-green-600 text-muted-foreground"
           )}
         >
           {todo.content}

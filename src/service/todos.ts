@@ -18,5 +18,9 @@ export const todosService = {
 
   async remove(id: number): Promise<boolean> {
     return !!(await todoTurso.remove(id));
-  }
+  },
+
+  async updatePriority(id: number, priority: number): Promise<boolean> {
+  return !!(await todoTurso.updatePriority(id, priority));
+}
 };

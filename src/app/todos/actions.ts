@@ -25,7 +25,19 @@ export async function removeTodoAction(id: number) {
     
   }
   revalidatePath("/todos");
+
+
   
+}
+  export async function updateTodoPriorityAction(id: number, priority: number) {
+  const success = await todosService.updatePriority(id, priority);
+  
+  if (success) {
+    revalidatePath("/"); // Revalidate the page to show updated data
+    return { success: true };
+  }
+  
+  throw new Error("Failed to update priority");
 }
 
 

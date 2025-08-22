@@ -12,7 +12,7 @@ export const todoTurso = {
     async add(content: string): Promise<Todo> {
         const [todo] = await db
             .insert(todosTable)
-            .values({ content, completed: false })
+            .values({ content, completed: false, priority: 0 })
             .returning();
         return todo;
     },
@@ -30,5 +30,13 @@ export const todoTurso = {
             .delete(todosTable)
             .where(eq(todosTable.id, id));
             return result.rowsAffected===1;
+    },
+
+    async updatePriority(id: number, priority: number): Promise<Boolean> {
+        const result = await db
+            .update(todosTable)
+            .set({ priority })
+            .where(eq(todosTable.id, id));
+        return result.rowsAffected === 1;
     }
 }

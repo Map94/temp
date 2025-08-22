@@ -57,7 +57,7 @@ export function TodosList({ todos }: Props) {
         loop: true,
         dragFree: true,
       }}
-      className="w-full max-w-2xl min-w-2xl"
+      className="w-full max-w-2xl min-w-2xl select-none"
     >
       <CarouselContent className="-mx-2">
         {todos.map((todo) => (

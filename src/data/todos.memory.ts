@@ -1,7 +1,7 @@
 import { Todo } from "./todos.types";
 
 const todosData: Todo[] = [
-  { id: 0, content: "Lav en todo app", completed: false },
+  { id: 0, content: "Lav en todo app", completed: false, priority: 0 },
 ];
 
 export const todos = {
@@ -13,6 +13,7 @@ export const todos = {
       id: todosData.length,
       content,
       completed: false,
+      priority: 0,
     }
     todosData.push(newTodo);
     return Promise.resolve(newTodo);

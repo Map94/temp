@@ -6,7 +6,8 @@ import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
   {
     id: integer().primaryKey({ autoIncrement: true }).notNull(),
     content: text().notNull(),
-    completed: integer({ mode: "boolean" }).notNull()
+    completed: integer({ mode: "boolean" }).notNull(),
+    priority: integer().notNull().default(0)
     // andre felter
   },
 );
